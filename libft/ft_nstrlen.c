@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_nstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2015/01/28 20:22:57 by rlambert          #+#    #+#             */
+/*   Updated: 2015/01/28 20:24:06 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include "libft.h"
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+size_t		ft_nstrlen(const char *str, size_t maxlen)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	size_t	i;
+
+	i = 0;
+	while (*str++ && i < maxlen)
+		i++;
+	return (i);
 }

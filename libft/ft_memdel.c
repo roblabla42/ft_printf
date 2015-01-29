@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/03 16:38:22 by rlambert          #+#    #+#             */
+/*   Updated: 2014/11/04 12:09:53 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include "stdlib.h"
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+void	ft_memdel(void **ap)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	free(*ap);
+	*ap = NULL;
 }

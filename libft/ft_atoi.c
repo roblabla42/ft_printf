@@ -1,21 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/04 11:45:41 by rlambert          #+#    #+#             */
+/*   Updated: 2014/11/05 18:32:39 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include "libft.h"
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+static int	ft_isspace(int c)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	return ((9 <= c && c <= 13) || c == 32);
+}
+
+int			ft_atoi(const char *str)
+{
+	int n;
+	int isneg;
+
+	isneg = 0;
+	n = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
+	{
+		isneg = 1;
+		str++;
+	}
+	while (*str != '\0' && ft_isdigit(*str))
+	{
+		n = n * 10 + (*str++ - '0');
+	}
+	if (isneg)
+		return (-n);
+	else
+		return (n);
 }

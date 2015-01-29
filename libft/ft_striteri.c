@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/05 14:43:13 by rlambert          #+#    #+#             */
+/*   Updated: 2014/11/06 19:25:06 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
-
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	unsigned int i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

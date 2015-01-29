@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_putnwstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2015/01/27 17:55:45 by rlambert          #+#    #+#             */
+/*   Updated: 2015/01/28 21:29:48 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include <libft.h>
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+void	ft_putnwstr(const wchar_t *str, size_t len)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	size_t	i;
+
+	i = 0;
+	while (*str && i < len)
+	{
+		if (*str <= 0x7F)
+			i++;
+		else if (*str <= 0x7FF)
+			i += 2;
+		else if (*str <= 0xFFFF)
+			i += 3;
+		else if (*str <= 0x10FFFF)
+			i += 4;
+		if (i <= len)
+			ft_putwchar(*str++);
+	}
 }

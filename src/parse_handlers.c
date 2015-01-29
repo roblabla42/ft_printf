@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 19:37:18 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 22:57:50 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/01/29 17:28:45 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,32 @@ char	*parse_flags(char **format, t_arg *arg)
 	else
 		return (*format);
 }
-
+#include <stdio.h>
 char	*parse_width(char **format, va_list *list, t_arg *arg)
 {
+	int	got;
+
 	arg->width = 0;
-	if (**format == '*')
+	while (**format == '*' || ft_isdigit(**format))
 	{
-		(*format)++;
-		arg->width = va_arg(*list, unsigned int);
-		arg->got_width = 1;
-		return (*format);
+		if (**format == '*')
+		{
+			(*format)++;
+			got = va_arg(*list, int);
+			if (got < 0)
+				arg->right_pad = 1;
+			arg->width = got < 0 ? -got : got;
+			arg->got_width = 1;
+		}
+		if (ft_isdigit(**format))
+		{
+			arg->got_width = 1;
+			arg->width = 0;
+			while (ft_isdigit(**format))
+				arg->width = arg->width * 10 + (*(*format)++ - '0');
+		}
 	}
-	else if (ft_isdigit(**format))
-	{
-		arg->got_width = 1;
-		while (ft_isdigit(**format))
-			arg->width = arg->width * 10 + (*(*format)++ - '0');
-		return (*format);
-	}
-	else
-		return (*format);
+	return (*format);
 }
 
 char	*parse_precision(char **format, va_list *list, t_arg *arg)
@@ -72,15 +78,13 @@ char	*parse_precision(char **format, va_list *list, t_arg *arg)
 			arg->precision = va_arg(*list, unsigned int);
 			return (*format);
 		}
-		else if (ft_isdigit(**format))
+		else
 		{
 			while (ft_isdigit(**format))
 				arg->precision = arg->precision * 10 + (*(*format)++ - '0');
 			arg->got_precision = 1;
 			return (*format);
 		}
-		else
-			return (*format);
 	}
 	else
 		return (*format);

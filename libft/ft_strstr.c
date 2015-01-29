@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/04 14:58:25 by rlambert          #+#    #+#             */
+/*   Updated: 2014/11/07 18:48:32 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include "libft.h"
+#include <stdlib.h>
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+char *ft_strstr(const char *s1, const char *s2)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	const char *s1_it;
+	const char *s2_it;
+
+	if (*s2 == '\0')
+		return ((char*)s1);
+	while (*s1 != '\0')
+	{
+		s1_it = s1;
+		s2_it = s2;
+		while (*s2_it != '\0' && *s1_it == *s2_it)
+		{
+			s1_it++;
+			s2_it++;
+		}
+		if (*s2_it == '\0')
+			return ((char*)s1);
+		s1++;
+	}
+	return (NULL);
 }

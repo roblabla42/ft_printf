@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/03 16:10:17 by rlambert          #+#    #+#             */
+/*   Updated: 2014/11/06 19:24:05 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include <stdlib.h>
+#include "libft.h"
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+void	*ft_memalloc(size_t size)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	void *mem;
+
+	mem = malloc(size);
+	if (mem == NULL)
+		return (NULL);
+	else
+		return (ft_memset(mem, 0, size));
 }

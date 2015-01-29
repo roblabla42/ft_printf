@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 16:04:06 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 22:01:45 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/01/29 17:10:04 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ft_putnbr_precision(intmax_t nbr, t_arg *arg, unsigned nbr_len)
 		ft_putchar('-');
 		nbr_u = -nbr;
 	}
+	else if (arg->got_precision && arg->precision == 0 && nbr == 0)
+		return;
 	else
 	{
 		if (arg->force_sign)
@@ -91,13 +93,16 @@ ssize_t	handle_int(char **format, va_list *args, t_arg *arg)
 	nbr_len = nbrlen(nbr);
 	if ((arg->force_sign || arg->blank_sign) && nbr >= 0)
 		nbr_len++;
-	if (arg->pad_zeroes && !arg->right_pad && arg->got_width)
+	if (arg->got_width && !arg->right_pad && arg->pad_zeroes)
 	{
 		arg->precision = ft_max(arg->width, arg->precision);
 		arg->got_precision = 1;
 		arg->got_width = 0;
 	}
-	nbrstrlen = arg->got_precision ? ft_max(nbr_len, arg->precision) : nbr_len;
+	if (nbr == 0 && arg->got_precision && arg->precision == 0)
+		nbrstrlen = 0;
+	else
+		nbrstrlen = arg->got_precision ? ft_max(nbr_len, arg->precision) : nbr_len;
 	if (arg->got_width && !arg->right_pad)
 		width_pad(nbrstrlen, arg->width, ' ');
 	ft_putnbr_precision(nbr, arg, nbr_len);

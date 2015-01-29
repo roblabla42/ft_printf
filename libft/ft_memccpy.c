@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/03 14:43:17 by rlambert          #+#    #+#             */
+/*   Updated: 2014/11/07 18:47:25 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include "libft.h"
+#include <stdlib.h>
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	char *strsrc;
+	char *strdst;
+
+	strsrc = (char*)src;
+	strdst = (char*)dst;
+	while (n > 0 && *strsrc != c)
+	{
+		n--;
+		*strdst++ = *strsrc++;
+	}
+	if (n > 0)
+	{
+		*strdst++ = *strsrc++;
+		return ((void*)strdst);
+	}
+	else
+		return (NULL);
 }

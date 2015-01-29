@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 16:59:29 by rlambert         ###   ########.fr       */
+/*   Created: 2014/11/05 15:11:42 by rlambert          #+#    #+#             */
+/*   Updated: 2015/01/02 16:21:42 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "handle_funcs.h"
+#include "libft.h"
 
-ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
+char	*ft_strtrim(char const *s)
 {
-	(void)format;
-	return (generic_handle_unsigned(format, args, arg, "01234567", "0"));
+	char const *s_end;
+
+	if (s == NULL)
+		return (NULL);
+	while (*s == ' ' || *s == '\t' || *s == '\n')
+		s++;
+	if (*s == '\0')
+		return (ft_strnew(0));
+	s_end = s + ft_strlen(s) - 1;
+	while (*s_end == ' ' || *s_end == '\t' || *s_end == '\n')
+		s_end--;
+	return (ft_strsub(s, 0, s_end - s + 1));
 }

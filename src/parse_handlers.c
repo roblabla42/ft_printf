@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 19:37:18 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/29 17:28:45 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/02 17:22:13 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*parse_flags(char **format, t_arg *arg)
 	else
 		return (*format);
 }
-#include <stdio.h>
+
 char	*parse_width(char **format, va_list *list, t_arg *arg)
 {
 	int	got;
@@ -67,15 +67,19 @@ char	*parse_width(char **format, va_list *list, t_arg *arg)
 
 char	*parse_precision(char **format, va_list *list, t_arg *arg)
 {
+	int prec;
+
 	if (**format == '.')
 	{
-		arg->pad_zeroes = 0;
 		(*format)++;
 		if (**format == '*')
 		{
 			(*format)++;
-			arg->got_precision = 1;
-			arg->precision = va_arg(*list, unsigned int);
+			if ((prec = va_arg(*list, int)) >= 0)
+			{
+				arg->got_precision = 1;
+				arg->precision = prec;
+			}
 			return (*format);
 		}
 		else

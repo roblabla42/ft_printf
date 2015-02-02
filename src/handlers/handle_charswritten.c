@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_handlers.h                                   :+:      :+:    :+:   */
+/*   handle_charswritten.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/21 20:02:58 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 17:25:48 by rlambert         ###   ########.fr       */
+/*   Created: 2015/02/02 15:43:50 by rlambert          #+#    #+#             */
+/*   Updated: 2015/02/02 15:43:51 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_HANDLERS_H
-# define PARSE_HANDLERS_H
-# include "handle_funcs.h"
+#include "handle_funcs.h"
+#include <libft.h>
+#include "utils.h"
 
-char	*parse_flags(char **format, t_arg *arg);
-char	*parse_width(char **format, va_list *list, t_arg *arg);
-char	*parse_precision(char **format, va_list *list, t_arg *arg);
-char	*parse_length(char **format, t_arg *arg);
-#endif
+ssize_t	handle_charswritten(char **format, va_list *args, t_arg *arg)
+{
+	(void)format;
+	(void)args;
+	(void)arg;
+	return (0);
+}

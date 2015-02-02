@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 11:40:59 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 17:52:47 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/02 15:31:14 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static ssize_t	handle_arg(char **format, va_list *args, t_arg *sarg)
 	return (ret);
 }
 
-static int			ft_inner_printf(const char *format, va_list *args, size_t chrs)
+static int		ft_inner_printf(const char *format, va_list *args, size_t chrs)
 {
 	char	*next_arg;
 	t_arg	sarg;
@@ -71,7 +71,7 @@ static int			ft_inner_printf(const char *format, va_list *args, size_t chrs)
 	}
 }
 
-int					ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		ret;

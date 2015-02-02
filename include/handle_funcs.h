@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 12:45:58 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 22:30:45 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/02 20:22:06 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 # include <stdarg.h>
 # include "ft_printf.h"
 # include <stdint.h>
-#include <sys/types.h>
+# include <sys/types.h>
 
-typedef struct	s_arg
+typedef struct		s_arg
 {
 	int				force_prefix : 1;
 	int				pad_zeroes : 1;
@@ -40,18 +40,22 @@ typedef struct	s_arg
 }					t_arg;
 
 typedef ssize_t(*t_handler)(char**, va_list*, t_arg*);
-ssize_t		handle_escape(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_str(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_wstr(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_ptr(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_int(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_long(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_octal(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_unsigned(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_hex(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_char(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_wchar(char **format, va_list *args, t_arg *arg);
-ssize_t		handle_null(char**format, va_list *args, t_arg *arg);
-ssize_t		generic_handle_unsigned(char **, va_list *, t_arg *, char *, char *);
-t_handler	get_handler(char c);
+ssize_t				handle_escape(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_str(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_wstr(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_ptr(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_int(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_long(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_octal(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_unsigned(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_hex(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_char(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_wchar(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_null(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_binary(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_float(char **format, va_list *args, t_arg *arg);
+ssize_t				handle_charswritten(char **format, va_list *a, t_arg *arg);
+ssize_t				handle_uint(uintmax_t nbr, t_arg *arg, char *b, char *prefix);
+t_handler			get_handler(char c);
+
 #endif

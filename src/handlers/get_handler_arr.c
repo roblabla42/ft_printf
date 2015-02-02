@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 18:50:54 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 17:33:54 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/01/31 13:11:20 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static void	setup_arr(t_handler *handlers)
 	handlers['X'] = &handle_hex;
 	handlers['c'] = &handle_char;
 	handlers['C'] = &handle_wchar;
+	handlers['b'] = &handle_binary;
+	handlers['f'] = &handle_float;
+	handlers['n'] = &handle_charswritten;
 }
 
 t_handler	get_handler(char c)

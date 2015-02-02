@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_handlers.h                                   :+:      :+:    :+:   */
+/*   handle_float.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/21 20:02:58 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 17:25:48 by rlambert         ###   ########.fr       */
+/*   Created: 2015/01/31 12:42:42 by rlambert          #+#    #+#             */
+/*   Updated: 2015/02/02 15:44:04 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_HANDLERS_H
-# define PARSE_HANDLERS_H
-# include "handle_funcs.h"
+#include "handle_funcs.h"
+#include <libft.h>
+#include "utils.h"
+#include <stdarg.h>
 
-char	*parse_flags(char **format, t_arg *arg);
-char	*parse_width(char **format, va_list *list, t_arg *arg);
-char	*parse_precision(char **format, va_list *list, t_arg *arg);
-char	*parse_length(char **format, t_arg *arg);
-#endif
+ssize_t	handle_float(char **format, va_list *args, t_arg *arg)
+{
+	float	nbr;
+
+	(void)format;
+	(void)arg;
+	nbr = (float)va_arg(*args, double);
+	ft_putstr("Float");
+	return (0);
+}

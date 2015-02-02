@@ -6,7 +6,7 @@
 #    By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 11:25:08 by rlambert          #+#    #+#              #
-#    Updated: 2015/01/28 20:19:24 by rlambert         ###   ########.fr        #
+#    Updated: 2015/02/02 13:29:35 by rlambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ SRCS = src/ft_printf.c \
 	   src/parse_handlers.c \
 	   src/utils/get_unsigned_from_length.c \
 	   src/utils/width_pad.c \
+	   src/utils/nbrlen.c \
+	   src/utils/calc_nbrstrlen.c \
+	   src/utils/nbrforceprefix.c \
 	   src/handlers/get_handler_arr.c \
 	   src/handlers/generic_handle_unsigned.c \
 	   src/handlers/handle_null.c \
@@ -35,6 +38,9 @@ SRCS = src/ft_printf.c \
 	   src/handlers/handle_str.c \
 	   src/handlers/handle_unsigned.c \
 	   src/handlers/handle_wchar.c \
+	   src/handlers/handle_binary.c \
+	   src/handlers/handle_charswritten.c \
+	   src/handlers/handle_float.c \
 	   src/handlers/handle_wstr.c
 
 LIBFT_PATH ?= libft/

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_char.c                                      :+:      :+:    :+:   */
+/*   calc_nbrstrlen.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 15:09:51 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 15:36:06 by rlambert         ###   ########.fr       */
+/*   Created: 2015/01/30 18:45:25 by rlambert          #+#    #+#             */
+/*   Updated: 2015/02/02 17:23:30 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include <inttypes.h>
 #include <libft.h>
-#include "ft_printf.h"
 #include "handle_funcs.h"
 #include "utils.h"
 
-ssize_t	handle_char(char **format, va_list *args, t_arg *arg)
+unsigned int	calc_nbrstrlen(uintmax_t nbr, char *base, char *p, t_arg *arg)
 {
-	(void)format;
-	if (arg->length == l)
-		return (handle_wchar(format, args, arg));
+	unsigned int	nbr_len;
+	unsigned int	nbrstrlen;
+
+	nbr_len = nbrlen(nbr, base);
+	if (nbr == 0 && arg->got_precision && arg->precision == 0)
+		nbrstrlen = 0;
+	else if (arg->got_precision)
+		nbrstrlen = ft_max(nbr_len, arg->precision);
 	else
-	{
-		if (arg->got_width && !arg->right_pad)
-			width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
-		ft_putchar(va_arg(*args, int));
-		if (arg->got_width && arg->right_pad)
-			width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
-		return (arg->got_width ? ft_max(arg->width, 1) : 1);
-	}
+		nbrstrlen = nbr_len;
+	if (arg->force_prefix && p != NULL && nbr != 0)
+		nbrstrlen += ft_strlen(p);
+	return (nbrstrlen);
 }

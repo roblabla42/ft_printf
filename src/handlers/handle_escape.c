@@ -6,18 +6,23 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 18:48:13 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 17:34:07 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/01/31 11:31:19 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "handle_funcs.h"
 #include <libft.h>
+#include "utils.h"
 
 ssize_t	handle_escape(char **format, va_list *args, t_arg *arg)
 {
 	(void)format;
 	(void)args;
 	(void)arg;
+	if (arg->got_width && !arg->right_pad)
+		width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
 	ft_putchar('%');
-	return (1);
+	if (arg->got_width && arg->right_pad)
+		width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
+	return (arg->got_width ? ft_max(arg->width, 1) : 1);
 }

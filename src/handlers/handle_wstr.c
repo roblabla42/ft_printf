@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 18:43:43 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 15:48:58 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/06 15:19:57 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ ssize_t	handle_wstr(char **format, va_list *args, t_arg *arg)
 	str = va_arg(*args, wchar_t*);
 	if (str == NULL)
 		str = L"(null)";
-	strlen = arg->got_precision ? calc_wstrlen(str, arg->precision) :
+	strlen = arg->got_precision ? calc_wstrlen(str, arg->precision, 0) :
 			ft_wstrlen(str);
 	if (arg->got_width && !arg->right_pad)
 		width_pad(strlen, arg->width, arg->pad_zeroes ? '0' : ' ');

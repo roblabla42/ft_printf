@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 12:45:58 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 20:22:06 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/17 18:13:34 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ typedef struct		s_arg
 		l,
 		ll,
 		j,
-		z,
+		z
 	}				length;
 }					t_arg;
 
-typedef ssize_t(*t_handler)(char**, va_list*, t_arg*);
 ssize_t				handle_escape(char **format, va_list *args, t_arg *arg);
 ssize_t				handle_str(char **format, va_list *args, t_arg *arg);
 ssize_t				handle_wstr(char **format, va_list *args, t_arg *arg);
@@ -55,7 +54,8 @@ ssize_t				handle_null(char **format, va_list *args, t_arg *arg);
 ssize_t				handle_binary(char **format, va_list *args, t_arg *arg);
 ssize_t				handle_float(char **format, va_list *args, t_arg *arg);
 ssize_t				handle_charswritten(char **format, va_list *a, t_arg *arg);
-ssize_t				handle_uint(uintmax_t nbr, t_arg *arg, char *b, char *prefix);
+ssize_t				handle_uint(uintmax_t nbr, t_arg *arg, char *b, char *p);
+typedef ssize_t		(*t_handler)(char**, va_list*, t_arg*);
 t_handler			get_handler(char c);
 
 #endif

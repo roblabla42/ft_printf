@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 18:50:54 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/31 13:11:20 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/17 18:13:55 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static void	setup_arr(t_handler *handlers)
 	handlers['n'] = &handle_charswritten;
 }
 
-t_handler	get_handler(char c)
+ssize_t		(*g_get_handler(char c))(char**, va_list*, t_arg*)
 {
 	static t_handler	*handlers = NULL;
 
 	if (handlers == NULL)
 	{
-		handlers = ft_memalloc(sizeof(t_handler) * 256);
+		handlers = ft_memalloc(sizeof(*handlers) * 256);
 		if (handlers != NULL)
 			setup_arr(handlers);
 	}

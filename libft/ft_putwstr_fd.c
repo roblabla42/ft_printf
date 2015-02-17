@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 14:37:16 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 13:29:07 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/17 17:50:23 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 
 void	ft_putwstr_fd(wchar_t const *str, int fd)
 {
-	(void)str;
-	(void)fd;
-
 	while (*str)
 		ft_putwchar_fd(*str++, fd);
 }

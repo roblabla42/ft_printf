@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:09:51 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 15:36:06 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/24 15:50:59 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ssize_t	handle_char(char **format, va_list *args, t_arg *arg)
 			width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
 		ft_putchar(va_arg(*args, int));
 		if (arg->got_width && arg->right_pad)
-			width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
+			width_pad(1, arg->width, ' ');
 		return (arg->got_width ? ft_max(arg->width, 1) : 1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 16:33:11 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 15:45:24 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/24 16:31:04 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ ssize_t	handle_octal(char **format, va_list *args, t_arg *arg)
 	if (arg->force_prefix && nbr == 0 &&
 				arg->got_precision && arg->precision == 0)
 	{
+		if (arg->got_width && !arg->right_pad)
+			width_pad(1, arg->width, arg->pad_zeroes ? '0' : ' ');
 		ft_putstr("0");
-		return (1);
+		if (arg->got_width && arg->right_pad)
+			width_pad(1, arg->width, ' ');
+		return (arg->got_width ? ft_max(arg->width, 1) : 1);
 	}
 	else if (arg->force_prefix && nbr != 0)
 	{

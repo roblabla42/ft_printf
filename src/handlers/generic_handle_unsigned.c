@@ -6,8 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 21:12:28 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 15:35:40 by rlambert         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2015/02/19 19:51:47 by marvin           ###   ########.fr       */ /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
@@ -37,7 +36,10 @@ ssize_t		handle_uint(uintmax_t nbr, t_arg *arg, char *base, char *prefix)
 	nbr_len = nbrlen(nbr, base);
 	if (arg->got_width && !arg->right_pad && arg->pad_zeroes)
 	{
-		arg->precision = ft_max(arg->width, arg->precision);
+		if (arg->got_precision)
+			arg->precision = ft_max(arg->width, arg->precision);
+		else
+			arg->precision = ft_max(arg->width, nbr_len);
 		arg->got_precision = 1;
 		arg->got_width = 0;
 	}

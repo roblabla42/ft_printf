@@ -6,13 +6,13 @@
 #    By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 11:25:08 by rlambert          #+#    #+#              #
-#    Updated: 2015/02/02 13:29:35 by rlambert         ###   ########.fr        #
+#    Updated: 2015/02/26 14:22:09 by roblabla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-C_INCLUDE_PATH += libft/includes/ include/
+C_INCLUDE_PATH += libft/include/ include/
 
 CFLAGS += -Wall -Wextra -Werror
 

@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 21:12:28 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/24 17:30:16 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:39:48 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ ssize_t		handle_uint(uintmax_t nbr, t_arg *arg, char *base, char *prefix)
 	ft_putnbrbp(nbr, base, arg, nbr_len);
 	if (arg->got_width && arg->right_pad)
 		width_pad(nbrstrlen, arg->width, ' ');
-	return (arg->got_width ? ft_max(nbrstrlen, arg->width) : nbrstrlen);
+	return (arg->got_width ? FT_MAX(nbrstrlen, arg->width) : nbrstrlen);
 }

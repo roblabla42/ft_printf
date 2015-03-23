@@ -6,7 +6,7 @@
 #    By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 11:25:08 by rlambert          #+#    #+#              #
-#    Updated: 2015/02/26 14:22:09 by roblabla         ###   ########.fr        #
+#    Updated: 2015/02/26 15:08:08 by roblabla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ $(LIBFT_PATH)/libft.a:
 
 $(NAME): $(LIBFT_PATH)/libft.a $(OBJS)
 	$(CP) $(LIBFT_PATH)/libft.a $(NAME)
-	$(AR) -rcs $(NAME) $?
+	$(AR) -rcs $(NAME) $^
 
 clean:
 	$(RM) $(OBJS)
@@ -84,4 +84,4 @@ fclean: clean
 re: fclean all
 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(LIBFT_PATH)/libft.a

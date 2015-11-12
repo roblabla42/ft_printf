@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 19:37:18 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/19 19:52:08 by marvin           ###   ########.fr       */
+/*   Updated: 2015/11/12 18:01:25 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include "handle_funcs.h"
 
-char	*parse_flags(char **format, t_arg *arg)
+char	*ft_printf_parse_flags(char **format, t_arg *arg)
 {
 	if (**format == '#' || **format == '0' || **format == '-' || **format == '+'
 		|| **format == ' ')
@@ -32,13 +32,13 @@ char	*parse_flags(char **format, t_arg *arg)
 		(*format)++;
 		if (arg->right_pad)
 			arg->pad_zeroes = 0;
-		return (parse_flags(format, arg));
+		return (ft_printf_parse_flags(format, arg));
 	}
 	else
 		return (*format);
 }
 
-char	*parse_width(char **format, va_list *list, t_arg *arg)
+char	*ft_printf_parse_width(char **format, va_list *list, t_arg *arg)
 {
 	int	got;
 
@@ -65,7 +65,7 @@ char	*parse_width(char **format, va_list *list, t_arg *arg)
 	return (*format);
 }
 
-char	*parse_precision(char **format, va_list *list, t_arg *arg)
+char	*ft_printf_parse_precision(char **format, va_list *list, t_arg *arg)
 {
 	int prec;
 
@@ -94,7 +94,7 @@ char	*parse_precision(char **format, va_list *list, t_arg *arg)
 		return (*format);
 }
 
-char	*parse_length(char **format, t_arg *arg)
+char	*ft_printf_parse_length(char **format, t_arg *arg)
 {
 	if (**format == 'h' && *(*format + 1) == 'h')
 	{

@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 16:04:06 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 15:44:48 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/11/12 17:59:35 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static intmax_t	get_signed_from_length(va_list *args, t_arg *arg)
 	return (nbr);
 }
 
-ssize_t			handle_int(char **format, va_list *args, t_arg *arg)
+ssize_t			ft_printf_handle_int(char **format, va_list *args, t_arg *arg)
 {
 	intmax_t				nbr;
 	char					*prefix;
@@ -61,8 +61,8 @@ ssize_t			handle_int(char **format, va_list *args, t_arg *arg)
 			prefix = " ";
 		else
 			prefix = "";
-		return (nbrforceprefix(nbr, "0123456789", arg, prefix));
+		return (ft_printf_nbrforceprefix(nbr, "0123456789", arg, prefix));
 	}
 	else
-		return (handle_uint(nbr, arg, "0123456789", NULL));
+		return (ft_printf_handle_uint(nbr, arg, "0123456789", NULL));
 }

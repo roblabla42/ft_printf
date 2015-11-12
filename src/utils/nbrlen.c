@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 18:09:56 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 17:24:00 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/11/12 18:02:12 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <sys/types.h>
 #include <libft.h>
 
-unsigned int	nbrlen(uintmax_t nbr, char *base)
+unsigned int	ft_printf_nbrlen(uintmax_t nbr, char *base)
 {
 	size_t			base_nbr;
 	unsigned int	i;

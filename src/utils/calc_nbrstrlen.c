@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 18:45:25 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/02 17:23:30 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/11/12 18:01:35 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #include "handle_funcs.h"
 #include "utils.h"
 
-unsigned int	calc_nbrstrlen(uintmax_t nbr, char *base, char *p, t_arg *arg)
+unsigned int	ft_printf_calc_nbrstrlen(uintmax_t nbr, char *base,
+		char *p, t_arg *arg)
 {
 	unsigned int	nbr_len;
 	unsigned int	nbrstrlen;
 
-	nbr_len = nbrlen(nbr, base);
+	nbr_len = ft_printf_nbrlen(nbr, base);
 	if (nbr == 0 && arg->got_precision && arg->precision == 0)
 		nbrstrlen = 0;
 	else if (arg->got_precision)

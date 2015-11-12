@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 18:50:54 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/19 19:14:47 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/11/12 17:58:12 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 
 static void	setup_arr(t_handler *handlers)
 {
-	handlers['%'] = &handle_escape;
-	handlers['s'] = &handle_str;
-	handlers['S'] = &handle_wstr;
-	handlers['p'] = &handle_ptr;
-	handlers['d'] = &handle_int;
-	handlers['D'] = &handle_long;
-	handlers['i'] = &handle_int;
-	handlers['o'] = &handle_octal;
-	handlers['O'] = &handle_long;
-	handlers['u'] = &handle_unsigned;
-	handlers['U'] = &handle_long;
-	handlers['x'] = &handle_hex;
-	handlers['X'] = &handle_hex;
-	handlers['c'] = &handle_char;
-	handlers['C'] = &handle_wchar;
-	handlers['b'] = &handle_binary;
-	handlers['f'] = &handle_float;
-	handlers['n'] = &handle_charswritten;
+	handlers['%'] = &ft_printf_handle_escape;
+	handlers['s'] = &ft_printf_handle_str;
+	handlers['S'] = &ft_printf_handle_wstr;
+	handlers['p'] = &ft_printf_handle_ptr;
+	handlers['d'] = &ft_printf_handle_int;
+	handlers['D'] = &ft_printf_handle_long;
+	handlers['i'] = &ft_printf_handle_int;
+	handlers['o'] = &ft_printf_handle_octal;
+	handlers['O'] = &ft_printf_handle_long;
+	handlers['u'] = &ft_printf_handle_unsigned;
+	handlers['U'] = &ft_printf_handle_long;
+	handlers['x'] = &ft_printf_handle_hex;
+	handlers['X'] = &ft_printf_handle_hex;
+	handlers['c'] = &ft_printf_handle_char;
+	handlers['C'] = &ft_printf_handle_wchar;
+	handlers['b'] = &ft_printf_handle_binary;
+	handlers['f'] = &ft_printf_handle_float;
+	handlers['n'] = &ft_printf_handle_charswritten;
 }
 
-t_handler	get_handler(char c)
+t_handler	ft_printf_get_handler(char c)
 {
 	static t_handler	*handlers = NULL;
 

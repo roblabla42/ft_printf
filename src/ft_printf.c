@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 11:40:59 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/17 18:09:22 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/11/12 17:57:44 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ static ssize_t	handle_arg(char **format, va_list *args, t_arg *sarg)
 
 	if ((*(++*format)) == '\0')
 		return (0);
-	if ((parse_flags(format, sarg)) == NULL)
+	if ((ft_printf_parse_flags(format, sarg)) == NULL)
 		return (-1);
-	if ((parse_width(format, args, sarg)) == NULL)
+	if ((ft_printf_parse_width(format, args, sarg)) == NULL)
 		return (-1);
-	if ((parse_precision(format, args, sarg)) == NULL)
+	if ((ft_printf_parse_precision(format, args, sarg)) == NULL)
 		return (-1);
-	if ((parse_length(format, sarg)) == NULL)
+	if ((ft_printf_parse_length(format, sarg)) == NULL)
 		return (-1);
 	if (**format == '\0')
 		return (0);
-	if (get_handler(**format) == NULL)
-		handler = handle_null;
+	if (ft_printf_get_handler(**format) == NULL)
+		handler = ft_printf_handle_null;
 	else
-		handler = get_handler(**format);
+		handler = ft_printf_get_handler(**format);
 	ret = handler(format, args, sarg);
 	(*format)++;
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 19:12:13 by rlambert          #+#    #+#             */
-/*   Updated: 2015/01/28 17:33:41 by rlambert         ###   ########.fr       */
+/*   Updated: 2015/11/12 15:22:16 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdarg.h>
 #include "handle_funcs.h"
 
-uintmax_t	get_unsigned_from_length(va_list *args, t_arg *arg)
+uintmax_t	ft_printf_get_unsigned_from_length(va_list *args, t_arg *arg)
 {
 	uintmax_t	nbr;
 

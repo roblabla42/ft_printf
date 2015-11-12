@@ -6,7 +6,7 @@
 /*   By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 18:43:43 by rlambert          #+#    #+#             */
-/*   Updated: 2015/02/26 14:47:48 by roblabla         ###   ########.fr       */
+/*   Updated: 2015/11/12 18:01:05 by roblabla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "handle_funcs.h"
 #include "utils.h"
 
-size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
+static size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 {
 	if (*str == '\0' || precision == 0)
 		return (i);
@@ -32,7 +32,7 @@ size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 		return (i);
 }
 
-size_t	ft_wstrlen(wchar_t *str)
+static size_t	ft_wstrlen(wchar_t *str)
 {
 	size_t i;
 
@@ -52,7 +52,7 @@ size_t	ft_wstrlen(wchar_t *str)
 	return (i);
 }
 
-ssize_t	handle_wstr(char **format, va_list *args, t_arg *arg)
+ssize_t			ft_printf_handle_wstr(char **format, va_list *args, t_arg *arg)
 {
 	wchar_t	*str;
 	size_t	strlen;
@@ -65,9 +65,9 @@ ssize_t	handle_wstr(char **format, va_list *args, t_arg *arg)
 	strlen = arg->got_precision ? calc_wstrlen(str, arg->precision, 0) :
 			ft_wstrlen(str);
 	if (arg->got_width && !arg->right_pad)
-		width_pad(strlen, arg->width, arg->pad_zeroes ? '0' : ' ');
+		ft_printf_width_pad(strlen, arg->width, arg->pad_zeroes ? '0' : ' ');
 	ft_putnwstr(str, strlen);
 	if (arg->got_width && arg->right_pad)
-		width_pad(strlen, arg->width, ' ');
+		ft_printf_width_pad(strlen, arg->width, ' ');
 	return (arg->got_width ? FT_MAX(strlen, arg->width) : strlen);
 }

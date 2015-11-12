@@ -6,7 +6,7 @@
 #    By: rlambert <rlambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 11:25:08 by rlambert          #+#    #+#              #
-#    Updated: 2015/11/12 18:08:13 by roblabla         ###   ########.fr        #
+#    Updated: 2015/11/12 18:15:47 by rlambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,14 @@ SRCS = src/ft_printf.c \
 	   src/handlers/handle_float.c \
 	   src/handlers/handle_wstr.c
 
-LIBFT_FUNS =	strchr \
+LIBFT_FUNS =	putchar_fd \
+				putchar_fd \
+				putstr_fd \
+				putnbrbase_fd \
+				putnstr_fd \
+				putwchar_fd \
+				memset \
+				strchr \
 				putstr \
 				strlen \
 				putnstr \
@@ -58,8 +65,7 @@ LIBFT_FUNS =	strchr \
 				putnwstr \
 				putnbrbase \
 
-LIBFT_CFLAGS += $(foreach fun,$(LIBFT_FUNS),-Dft_$(fun)=ft_printf_libft_$(fun))
-LIBFT_CFLAGS += -Ilibft/include
+CFLAGS += $(foreach fun,$(LIBFT_FUNS),-Dft_$(fun)=ft_printf_libft_$(fun))
 
 OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
 OBJS += $(foreach fun,$(LIBFT_FUNS),obj/libft/ft_$(fun).o)
@@ -82,7 +88,7 @@ obj/%.o: src/%.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 obj/libft/%.o: libft/%.c
-	$(CC) -c $(LIBFT_CFLAGS) $(CPPFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) -rcs $(NAME) $^
